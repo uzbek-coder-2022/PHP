@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /** @var common\models\NewsSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Yangiliklar ro\'yxati';
+$this->title = 'Yangiliklar';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="news-index">
@@ -29,19 +29,19 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'Id',
+            'id',
             'title',
-            'description:ntext',
+//            'description:ntext',
             'views_count',
-            'created_at',
-            'updated_at',
             'photo_path',
             'author',
             'category',
+            'created_at',
+            'updated_at',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, News $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'Id' => $model->Id]);
+                    return Url::toRoute([$action, 'id' => $model->id]);
                  }
             ],
         ],

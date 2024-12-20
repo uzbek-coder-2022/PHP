@@ -3,11 +3,13 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "{{%news}}".
  *
- * @property int $Id
+ * @property int $id
  * @property string|null $title Yangilik mavzusi
  * @property string|null $description Yangilik tavsifi
  * @property int|null $views_count Ko'rishlar soni
@@ -39,6 +41,7 @@ class News extends \yii\db\ActiveRecord
             [['title'], 'string', 'max' => 255],
             [['photo_path'], 'string', 'max' => 100],
             [['category'], 'string', 'max' => 20],
+            [['photo_path'], 'file', 'extensions' => 'jpg, png, jpeg', 'maxSize' => 1024 * 1024 * 2], // Maksimal o'lcham 2MB
         ];
     }
 
@@ -48,7 +51,7 @@ class News extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'Id' => 'ID',
+            'id' => 'ID',
             'title' => 'Yangilik mavzusi',
             'description' => 'Yangilik tavsifi',
             'views_count' => 'Ko\'rishlar soni',

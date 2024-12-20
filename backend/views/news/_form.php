@@ -11,40 +11,47 @@ use dosamigos\ckeditor\CKEditor;
 
 <div class="news-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true, 'placeholder' => 'Mavzu']) ?>
+    <div class="row">
+        <div class="col-md-6">
+            <?= $form->field($model, 'title')->textInput(['maxlength' => true])->label(false)->textInput(['placeholder' => 'Mavzusi']) ?>
+        </div>
 
-    <?= $form->field($model, 'description')->widget(CKEditor::className(), [
-        'options' => ['rows' => 4],
-        'preset' => 'full',
-    ]) ?>
-
-
-    <!--    --><?php //= $form->field($model, 'views_count')->textInput() ?>
-
-    <!--    --><?php //= $form->field($model, 'created_at')->textInput() ?>
-
-    <!--    --><?php //= $form->field($model, 'updated_at')->textInput() ?>
-    <br>
-    <?= $form->field($model, 'photo_path')->fileInput(['accept' => 'image/*']) ?>
-
-    <!--    --><?php //= $form->field($model, 'author')->textInput() ?>
-    <br>
-    <?= $form->field($model, 'category')->dropDownList(
-        [
-            'Category 1' => 'Category 1',
-            'Category 2' => 'Category 2',
-            'Category 3' => 'Category 3',
-        ],
-        ['prompt' => 'Kategoriyani tanlang']
-    )->label(false) ?>
+        <div class="col-md-6">
+            <?= $form->field($model, 'category')->dropDownList([
+                'technology' => 'Texnologiya',
+                'sports' => 'Sport',
+                'health' => 'Salomatlik',
+                'business' => 'Biznes',
+            ], ['prompt' => 'Kategoriyani tanlang'])->label(false) ?>
+        </div>
+    </div>
 
     <br>
-    <div class="form-group">
+    <div class="row">
+        <div class="col-md-12">
+            <?= $form->field($model, 'description')->widget(CKEditor::className(), [
+                'options' => ['rows' => 6],
+                'preset' => 'full', // CKEditor presetini tanlash, 'basic', 'standard', 'full'
+            ]) ?>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <?= $form->field($model, 'photo_path', [
+                'inputOptions' => ['accept' => 'image/*'] // Faqat rasm turidagi fayllar
+            ])->fileInput()->label('Rasm yuklash') ?>
+        </div>
+    </div>
+
+    <div class="form-group text-center">
         <?= Html::submitButton('Saqlash', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
 
+
 </div>
+

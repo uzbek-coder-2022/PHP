@@ -17,8 +17,8 @@ class NewsSearch extends News
     public function rules()
     {
         return [
-            [['Id', 'views_count', 'author'], 'integer'],
-            [['title', 'description', 'created_at', 'updated_at', 'photo_path', 'category'], 'safe'],
+            [['id', 'views_count', 'created_at', 'updated_at', 'author'], 'integer'],
+            [['title', 'description', 'photo_path', 'category'], 'safe'],
         ];
     }
 
@@ -58,7 +58,7 @@ class NewsSearch extends News
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'Id' => $this->Id,
+            'id' => $this->id,
             'views_count' => $this->views_count,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

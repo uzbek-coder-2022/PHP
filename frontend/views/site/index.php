@@ -3,6 +3,9 @@
 /** @var yii\web\View $this */
 
 use yii\bootstrap5\Carousel;
+use frontend\assets\AppAsset;
+
+AppAsset::register($this);
 
 $this->title = 'My Yii Application';
 ?>
@@ -16,7 +19,7 @@ $this->title = 'My Yii Application';
         $carouselItems = [];
         foreach ($imageFiles as $file) {
             $carouselItems[] = [
-                'content' => '<img src="' . Yii::$app->request->baseUrl . '/uploads/img/' . $file . '" alt="Uploaded Image">',
+                'content' => '<img class="carousel-image" src="' . Yii::$app->request->baseUrl . '/uploads/img/' . $file . '" alt="Uploaded Image">',
             ];
         }
 
@@ -25,6 +28,7 @@ $this->title = 'My Yii Application';
         ]);
         ?>
     </div>
+
 
 
     <div class="p-5 mb-4 bg-transparent rounded-3">
