@@ -37,6 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'updated_at',
             'photo_path',
             'author',
+            'category',
         ],
     ]) ?>
 

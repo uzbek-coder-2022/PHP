@@ -72,8 +72,8 @@ class SignupForm extends Model
                 ['html' => 'emailVerify-html', 'text' => 'emailVerify-text'],
                 ['user' => $user]
             )
-            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' robot'])
-            ->setSubject('Account registration at ' . Yii::$app->name)
+            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name])
+            ->setSubject(Yii::$app->name . 'da hisob qaydnomasini ro\'yxatdan o\'tkazish')
             ->setTo($this->email)
             ->send();
     }

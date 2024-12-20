@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /** @var common\models\NewsSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'News';
+$this->title = 'Yangiliklar ro\'yxati';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="news-index">
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create News', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Yangilik qo\'shish', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -34,9 +34,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'description:ntext',
             'views_count',
             'created_at',
-            //'updated_at',
-            //'photo_path',
-            //'author',
+            'updated_at',
+            'photo_path',
+            'author',
+            'category',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, News $model, $key, $index, $column) {

@@ -18,7 +18,7 @@ class NewsSearch extends News
     {
         return [
             [['Id', 'views_count', 'author'], 'integer'],
-            [['title', 'description', 'created_at', 'updated_at', 'photo_path'], 'safe'],
+            [['title', 'description', 'created_at', 'updated_at', 'photo_path', 'category'], 'safe'],
         ];
     }
 
@@ -67,7 +67,8 @@ class NewsSearch extends News
 
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'photo_path', $this->photo_path]);
+            ->andFilterWhere(['like', 'photo_path', $this->photo_path])
+            ->andFilterWhere(['like', 'category', $this->category]);
 
         return $dataProvider;
     }

@@ -10,19 +10,22 @@ $this->title = 'My Yii Application';
 <div class="site-index">
     <div class="carousel-container">
         <?php
-            echo Carousel::widget([
-                'items' => [
-                    '<img src="https://robocontest.uz/assets/img/watermark.jpg"/>',
-                    ['content' => '<img src="https://robocontest.uz/assets/img/watermark.jpg"/>'],
-                    [
-                        'content' => '<img src="https://robocontest.uz/assets/img/watermark.jpg"/>',
-                        'caption' => '<h4>This is title</h4><p>This is the caption text</p>',
-                        'options' => [],
-                    ],
-                ]
-            ]);
+        $imageFiles = scandir(Yii::getAlias('@webroot/uploads/img/'));
+        $imageFiles = array_diff($imageFiles, ['.', '..']);
+
+        $carouselItems = [];
+        foreach ($imageFiles as $file) {
+            $carouselItems[] = [
+                'content' => '<img src="' . Yii::$app->request->baseUrl . '/uploads/img/' . $file . '" alt="Uploaded Image">',
+            ];
+        }
+
+        echo Carousel::widget([
+            'items' => $carouselItems,
+        ]);
         ?>
     </div>
+
 
     <div class="p-5 mb-4 bg-transparent rounded-3">
         <div class="container-fluid py-5 text-center">

@@ -11,10 +11,11 @@ use Yii;
  * @property string|null $title Yangilik mavzusi
  * @property string|null $description Yangilik tavsifi
  * @property int|null $views_count Ko'rishlar soni
- * @property string $created_at Yaratilgan vaqti
- * @property string $updated_at Yangilangan vaqti
+ * @property int $created_at Yaratilgan vaqti
+ * @property int $updated_at Yangilangan vaqti
  * @property string $photo_path Rasm manzili
  * @property int $author Muallif
+ * @property string $category Kategoriya
  */
 class News extends \yii\db\ActiveRecord
 {
@@ -33,11 +34,11 @@ class News extends \yii\db\ActiveRecord
     {
         return [
             [['description'], 'string'],
-            [['views_count', 'author'], 'integer'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['photo_path', 'author'], 'required'],
+            [['views_count', 'created_at', 'updated_at', 'author'], 'integer'],
+            [['created_at', 'updated_at', 'photo_path', 'author', 'category'], 'required'],
             [['title'], 'string', 'max' => 255],
             [['photo_path'], 'string', 'max' => 100],
+            [['category'], 'string', 'max' => 20],
         ];
     }
 
@@ -55,6 +56,7 @@ class News extends \yii\db\ActiveRecord
             'updated_at' => 'Yangilangan vaqti',
             'photo_path' => 'Rasm manzili',
             'author' => 'Muallif',
+            'category' => 'Kategoriya',
         ];
     }
 }

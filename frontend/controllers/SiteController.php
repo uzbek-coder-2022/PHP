@@ -147,6 +147,15 @@ class SiteController extends Controller
     }
 
     /**
+     * Aloqa uchun.
+     *
+     * @return mixed
+     * */
+    public function actionNews() {
+        return $this->render('news');
+    }
+
+    /**
      * Signs user up.
      *
      * @return mixed
